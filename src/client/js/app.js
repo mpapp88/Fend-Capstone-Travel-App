@@ -1,8 +1,3 @@
-/* Global Variables */
-//API Key for OpenWeather
-const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip='
-const apiKey = ',gb&units=metric&APPID=a9af7139d8fec18c6941cecbae711816' //UK version
-
 // Create a new date instance dynamically with JS - UK Date format
 let d = new Date();
 let newDate = d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear();
