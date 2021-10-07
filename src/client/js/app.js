@@ -28,7 +28,7 @@ function handleSubmit(event) {
     postGeonamesData('http://localhost:8081/place',{city: placeInput})
     .then(function(tripTo){
         console.log(tripTo);
-        document.getElementById('tripTo').innerHTML = ` City:${tripTo.city}, Country:${tripTo.country}. `
+        document.getElementById('tripTo').innerHTML = ` You are going to <strong>${tripTo.city}</strong>, ${tripTo.country}. `
     
 
     postWeatherbitData("http://localhost:8081/weather", tripTo)
@@ -47,7 +47,7 @@ function handleSubmit(event) {
          document.getElementById('pic').src=`${img}`;
         });
     });
-    getCountdown(start);
+    getCountdown(start, end);
 };
 
 export {handleSubmit};
