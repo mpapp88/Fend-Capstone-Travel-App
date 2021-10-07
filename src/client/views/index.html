@@ -13,39 +13,42 @@
 
     <body>
         <header>
-          <div class="title">
+          <label class="title">
             <h1>Travel Planner by MP</h1>
-          </div>
+          </label>
+          <ul>
+            <li><a class="current" href="index.html">Home</a></li>
+            <li><a href="#result">Your trip</a></li>
+          </ul>
         </header>
         <main>
           <section class = container>
             <section class="main" >
-              <h1>Start your trip:</h1>
+              <h2>Start your trip:</h2>
               <div class = "form">
-                <div class = "city">
-                  <label for="city"> Your Destination</label>
-                  <input id="city" type="text" name="input" value=""  placeholder="example:Tokyo" required>
+                <div class = "place">
+                  <label for="place"> Your next journey to:</label>
+                  <input id="place" type="text" name="input" value=""  placeholder="Eg. London, Madrid, New York" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter destination city here'"  >
                 </div>
-                <div class = "startDate">
-                  <label for="startDate">Start Date </label>
-                  <input id="startDate"  type="date"  name="start" required>
+                <div class = "departure">
+                  <label for="departure">Departure </label>
+                  <input id="departure"  type="date"  name="start"  placeholder="dd/mm/yyyy" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter departure date here'"  required>
                 </div>
-                <div class = "returnDate"> 
-                  <label for="returnDate">Return Date </label>
-                  <input id="returnDate"  type="date"  name="end"  required >
+                <div class = "return"> 
+                  <label for="return">Return Date </label>
+                  <input id="return"  type="date"  name="end"  placeholder="dd/mm/yyyy" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter return date here'"  required >
                 </div>
-                <input id="submittrip" value="Go" type="submit">
+                <button id="generate" class="btn" type = "submit"> Submit </button><br>
                 </div>
             </section>
             <!-- Trip Summary section  -->
             <section class="result">
               <h3>Destination details:</h3>
               <div class = result-form>
-                <p id="destination"></p>
-                <p id="duration" ></p>
+                <p id="tripTo"></p>
                 <p id="countdown" ></p>
                 <p id="weather"></p>
-                <img id="picture" src="" alt="">
+                <img id="pic" src="" alt="">
               </div>
             </section>
           </section>

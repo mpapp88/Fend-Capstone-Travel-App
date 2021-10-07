@@ -8,12 +8,12 @@ let pic = {};
 //Event listener to add function to existing HTML DOM element
 document.getElementById("generate").addEventListener('click', handleSubmit);
 
- export function handleSubmit(event) {
+function handleSubmit(event) {
     event.preventDefault();
 
     let place = document.getElementById('place').value;
-    let start = document.getElementById('start').value;
-    let end = document.getElementById('end').value;
+    let start = document.getElementById('departure').value;
+    let end = document.getElementById('return').value;
 
     if (place == ""){
         alert('Please enter a valid destination.');
@@ -24,21 +24,21 @@ document.getElementById("generate").addEventListener('click', handleSubmit);
     else if (end == ""){
         alert('Please enter your return\'s date')
     }
+
     postGeonamesData('http://localhost:8081/place',{city: place})
     .then(function(tripTo){
         console.log(tripTo);
         document.getElementById('tripto').innerHTML = ` City:${tripTo.city}, Conutry:${tripTo.country},
         Conutry Code:${tripTo.code}. `
     })
-  
 
     postWeatherbitData("http://localhost:8801/weather", tripTo)
         .then (function(weather){
         
-            document.getElementById('weather').innerHTML =`The weather 
-            is <strong>${weather.description}</strong>, average emperature is <strong>${weather.averageTemp}</strong>.
-            Hightest:<strong>${weather.lowestTemp}</strong>,
-            Lowest:<strong>${weather.highestTemp}</strong>.`
+            document.getElementById('weather').innerHTML =`The expected weather for then 
+            is <strong>${weather.description}</strong>, average temperature is <strong>${weather.averageTemp}</strong>.
+            Lowest:<strong>${weather.lowestTemp}</strong>,
+            Highest:<strong>${weather.highestTemp}</strong>.`
         })
 
     postPixabayData('http://localhost:8801/pic',{  city:tripTo.city })
@@ -47,8 +47,10 @@ document.getElementById("generate").addEventListener('click', handleSubmit);
          let img = pic.hits[0].webformatURL;
          document.getElementById('pic').src=`${img}`;
     });
-    getCountdown(departure);
+    getCountdown(start);
 };
+
+export {handleSubmit};
 
 //POST APIs
 
