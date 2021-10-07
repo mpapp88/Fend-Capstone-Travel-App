@@ -6,7 +6,7 @@ let weather = {};
 let pic = {};
 
 //Event listener to add function to existing HTML DOM element
-document.getElementById("submit").addEventListener('click', handleSubmit);
+//document.getElementById("submit").addEventListener('click', handleSubmit);
 
 function handleSubmit(event) {
     event.preventDefault();
