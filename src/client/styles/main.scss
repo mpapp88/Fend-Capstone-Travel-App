@@ -1,124 +1,140 @@
 $keycolor: rgb(29, 33, 248);
+$second-color: rgb(231, 231, 6);
 $main-font: 'Inconsolata', monospace;
+$colored-background: linear-gradient(to top right,rgb(0, 110, 255),rgb(98, 165, 252),rgb(166, 201, 248));
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
 
 body{
-    background: #fffff8;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-#app{
-    display: grid;
-    grid-auto-rows: minmax(150px, auto);
-    /* grid-template-columns:  */
-    height:100vh;
-    background-image: url(./background.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: #dfe20d;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    grid-gap: 1em;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    min-height: 100vh;
+    font-family: $main-font;
+    color: $keycolor;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
-.holder{
-
-}
-
-.entry{
-    background: rgba(59, 74, 107, .4);
-}
-
-#entryHolder{
-color: #dfe20d;
-}
-
-#date{
-
-}
-
-#temp{
-
-}
-
-#content{
-
-}
-
-.headline {
-font-size: 35px;
-text-align: center;
-padding-top: 1em;
-}
-.title{
-color: #dfe20d;
-}
-
-/*  Basic Styling To Override Default For Basic HTML Elements */
-label{
-    display:block;
-    font-size: 27px;
-}
-
-input{
-    display:block;
-    height: 60px;
-    width: 320px;
-    background:#22b2da;
-    color: #dfe20d;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
-}
-
-button{
-    width: 400px;
+nav{
+    background: $colored-background;
     height: 100px;
-    background: #3b4a6b;
-    color: #dfe20d;
-    font-size: 26px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
-    box-shadow: 2px 4px 5px #444;
+    width: 100%;
+
+    .title {
+        font-size: 20px;
+        color: $second-color;
+        text-align: center;
+        height: 80px;
+        margin-right: 25px;
+        margin-top: 5px;
+    }
+
+    ul {
+        float: left;
+        margin-left: 25px;
+        li {
+            display: inline-block;
+            margin-left: 5px;
+            a {
+                color: $second-color;
+                font-size: 18px;
+                text-transform: uppercase;
+                padding: 10px 15px;
+                &:hover {
+                    background: $keycolor;
+                    transition: .3s;
+                }
+            }
+        }
+    }
 }
 
-button:hover{
-    font-size: 30px;
-    background: #213a70;
+.container {
+    background: center / cover url(../media/background.jpg) no-repeat;
+    width: 100%;
+    height: auto;
+    flex: 2;
+
+    h2 {
+        font-size: 16px;
+        text-align: center;
+        /*margin-top: 40px;
+        margin-left: 200px;*/
+    }
+    .form {
+        width: 850px;
+        height: 300px;
+        font-size: 15px;
+        border: black;
+        border-radius: 5px;
+        box-shadow: 5px 10px 18px rgb(129, 128, 128);
+        margin: 20px auto 30px;
+    }
+}
+.result-box {
+    width: 850px;
+    height: auto;
+    border: black;
+    border-radius: 5px;
+    box-shadow: 5px 10px 18px rgb(129, 128, 128);
+    margin: 20px auto;
+}
+.form input{
+border-color:black;
+border-radius: 5px;
+margin-left: 30px;
+width: 250px;
+height:30px;
+//text-indent: 5%;
+}
+#submit {
+float: center;
+width: 100px;
+height:40px;
+font-size: 16px;
+margin-top: 30px;
+margin-right: 40px;
+ margin-left: 40px;
+border:none;
+border-radius: 3px;
+background: $keycolor;
+color: $second-color;
+cursor: pointer;
+&:hover{
+    transform: scale(1.2);
+    transition: 3s;
+    }
+}
+.result {
+    img {
+        margin-top:5px;
+        margin-left: 5px;
+    }
+    h3{
+        padding-top: 5px;
+        padding-left: 5px;
+        font-size: 14px;
+        text-decoration: underline;
+    }
+    p {
+        padding-top: 5px;
+        padding-left: 5px;
+        font-size: 13px;
+    }
 }
 
-h1{
-    font-size: 36px;
+footer {
+    color: $second-color;
+    height: 60px;
+    font-family: $main-font;
+    font-size: 12px;
+    text-align: center;
+    padding: 15px 20px;
 }
-
-textarea{
-    background:#22b2da;
-    color: #dfe20d;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-}
-/* Reset style for HTML element on active to have no border*/
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
-}
-/* Style for Placeholder Text*/
-::placeholder { /* Firefox, Chrome, Opera */ 
-    color: #dfe20d; 
-    font-family: 'Oswald', sans-serif;
-
-} 
-  
-:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
-
-} 
-  
-::-ms-input-placeholder { /* Microsoft Edge */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
-
-} 
