@@ -29,7 +29,7 @@ function handleSubmit(event) {
     .then(function(tripTo){
         console.log(tripTo);
         document.getElementById('tripTo').innerHTML = ` City:${tripTo.city}, Country:${tripTo.country}. `
-    })
+    
 
     postWeatherbitData("http://localhost:8081/weather", tripTo)
         .then (function(weather){
@@ -38,13 +38,14 @@ function handleSubmit(event) {
             is <strong>${weather.description}</strong>, average temperature is <strong>${weather.averageTemp}</strong>C.
             Lowest:<strong>${weather.lowestTemp}</strong>C.,
             Highest:<strong>${weather.highestTemp}</strong>C.`
-    })
+        });
 
     postPixabayData('http://localhost:8081/pic',{  city:tripTo.city })
         .then(function (){
         
          let img = pic.hits[0].webformatURL;
          document.getElementById('pic').src=`${img}`;
+        });
     });
     getCountdown(start);
 };
