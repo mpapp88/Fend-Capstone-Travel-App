@@ -10,10 +10,10 @@ module.exports = {
     entry: './src/client/index.js',
     mode: 'production',
     output: {
-        libraryTarget: 'var',
-        library: 'Client',
+        //libraryTarget: 'var',
+        //library: 'Client',
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.min.js'
+        //filename: 'bundle.min.js'
     },
     optimization: {
         minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
@@ -41,6 +41,16 @@ module.exports = {
         new HtmlWebPackPlugin({
             template: "./src/client/views/index.html",
             filename: "./index.html",
+            minify: false,
+        }),
+        new CleanWebpackPlugin({
+            // Simulate the removal of files
+            dry: true,
+            // Write Logs to Console
+            verbose: true,
+            // Automatically remove all unused webpack assets on rebuild
+            cleanStaleWebpackAssets: true,
+            protectWebpackAssets: false
         }),
         new MiniCssExtractPlugin({ filename: "[name].css" }),
         new WorkboxPlugin.GenerateSW()

@@ -11,8 +11,10 @@ module.exports = {
     devtool: 'source-map',
     stats: 'verbose',
     output: {
-        libraryTarget: 'var',
-        library: 'Client'
+        path: path.resolve(__dirname, "dist")
+    },
+    devServer:{
+        port: 8800
     },
     module: {
         rules: [

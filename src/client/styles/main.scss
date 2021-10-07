@@ -63,25 +63,26 @@ ul {
     width: 100%;
     height: auto;
     flex: 2;
-
-    h2 {
-        font-size: 20px;
-        text-align: center;
-        font-weight: bold;
-        margin-top: 40px;
-        margin-left: 200px;
-    }
-    .form {
-        width: 75%;
-        height: 300px;
-        font-size: 18px;
-        border: black;
-        border-radius: 5px;
-        box-shadow: 5px 10px 18px rgb(129, 128, 128);
-        margin: 20px auto 30px;
-        opacity: 0.2;
-    }
 }
+h2 {
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-left: 200px;
+}
+.form {
+    width: 75%;
+    height: 300px;
+    font-size: 18px;
+    font-weight: bold;
+    border: black;
+    border-radius: 5px;
+    box-shadow: 5px 10px 18px rgb(129, 128, 128);
+    margin: 20px auto 30px;
+    opacity: 0.2;
+}
+
 .result-box {
     width: 75%;
     height: auto;
@@ -103,7 +104,8 @@ padding: 10px;
 float: left;
 width: 100px;
 height:40px;
-font-size: 16px;
+font-size: 18px;
+font-weight: bold;
 margin-top: 30px;
 margin-right: 40px;
 margin-left: 40px;
@@ -138,9 +140,9 @@ cursor: pointer;
 #footer {
     color: $second-color;
     background: $colored-background;
-    height: 60px;
+    height: 75px;
     font-family: $main-font;
-    font-size: 12px;
+    font-size: 16px;
     text-align: center;
     padding: 15px 20px;
 }
