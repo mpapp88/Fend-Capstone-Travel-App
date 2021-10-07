@@ -1,5 +1,5 @@
 ///***COUNTDOWN FUNCTION****////
-let start = document.getElementById('departure').value;
+//let start = document.getElementById('departure').value;
 
 const getCountdown = async(start) => {
     let startDate = new Date(start);

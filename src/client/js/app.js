@@ -1,5 +1,5 @@
-const { json } = require("body-parser");
-import getCountdown from "..src/client/js/countdown"
+//const { json } = require("body-parser");
+import {getCountdown} from "./countdown"
 
 let tripTo = {};
 let weather = {};
