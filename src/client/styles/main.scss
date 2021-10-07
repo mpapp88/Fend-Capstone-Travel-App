@@ -19,18 +19,22 @@ body{
     min-height: 100vh;
     font-family: $main-font;
     color: $keycolor;
-    overflow-x: hidden;
+    /*overflow-x: hidden;
     overflow: scroll;
-    scroll-behavior: smooth;
+    scroll-behavior: smooth;*/
+    background: $colored-background;
     /*background: url(../media/background.jpg);
     background-size: cover;
     background-repeat: no-repeat;*/
 }
 
 nav{
-    background: $colored-background;
+    //background: $colored-background;
     height: 100px;
     width: 100%;
+    border: black;
+    border-radius: 5px;
+    box-shadow: 5px 10px 18px rgb(223, 235, 170);
 }
 .title {
     font-size: 25px;
@@ -55,6 +59,7 @@ ul {
             padding: 10px 15px;
             &:hover {
                 background: $keycolor;
+                border-radius: 3px;
                 transition: .3s;
             }
         }
@@ -62,11 +67,11 @@ ul {
 }
 
 .container {
-    background: url('../media/background.jpg') no-repeat center center/cover;
-    //width: 100%;
+    //background: url('../media/background.jpg') no-repeat center center/cover;
+    width: 100%;
     height: auto;
     flex: 2;
-    overflow: scroll;
+    //overflow: scroll;
 }
 h2 {
     font-size: 25px;
@@ -83,7 +88,7 @@ h2 {
     font-weight: bold;
     border: black;
     border-radius: 5px;
-    box-shadow: 5px 10px 18px rgb(129, 128, 128);
+    box-shadow: 5px 10px 18px rgb(223, 235, 170);
     margin: 20px auto 30px;
     //opacity: 0.2;
 }
@@ -93,7 +98,7 @@ h2 {
     height: auto;
     border: black;
     border-radius: 5px;
-    box-shadow: 5px 10px 18px rgb(129, 128, 128);
+    box-shadow: 5px 10px 18px rgb(223, 235, 170);
     margin: 20px auto;
 }
 .form input{
@@ -145,10 +150,13 @@ cursor: pointer;
 
 .footer {
     color: $second-color;
-    background: $colored-background;
+    //background: $colored-background;
     height: 75px;
     font-family: $main-font;
     font-size: 16px;
     text-align: center;
     padding: 20px 20px;
+    border: black;
+    border-radius: 5px;
+    box-shadow: 5px 10px 18px rgb(223, 235, 170);
 }
