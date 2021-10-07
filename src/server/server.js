@@ -30,8 +30,9 @@ app.use(express.static('dist'))
 console.log(__dirname)
 
 // designates what port the app will listen to for incoming requests
-app.listen(8081, function () {
-    console.log('Example app listening on port 8081!')
+const port = 8081;
+app.listen(port, function () {
+    console.log(`Example app listening on port ${port}!`)
 })
 
 app.get('/all', function (req, res) {
@@ -53,8 +54,8 @@ const pixaKEY = process.env.PIXABAY_KEY;
 
 
 //POST Route for Geoname API
-app.post('/place', async function(req, res) {
-    let place = req.body.place;
+app.post("/place", async function(req, res) {
+    let place = req.body.city;
     let geoNamesApi = `${geoURL}${place}&maxRows=1&username=${geoKEY}`;
     let response = await fetch(geoNamesApi);
     try {
@@ -71,7 +72,7 @@ app.post('/place', async function(req, res) {
 app.post("/weather", async function (req, res) {
     let latitude = req.body.latitude;
     let longitude = req.body.longitude;
-    const weatherApi= `${weatherURL}&lat=${latitude}&lon=${longitude}&key=${weatherKEY}`;
+    let weatherApi= `${weatherURL}&lat=${latitude}&lon=${longitude}&key=${weatherKEY}`;
     let response = await fetch(weatherApi);
     try {
         const weatherData = await response.json();
@@ -85,8 +86,8 @@ app.post("/weather", async function (req, res) {
 
 //POST route for pixabay API//
 app.post("/pic", async function (req, res) {
-    let place = req.body.place;
-    const pixaApi = `${pixaURL}?key=${pixaKEY}&q=${place}&image_type=photo`;
+    let place = req.body.city;
+    let pixaApi = `${pixaURL}?key=${pixaKEY}&q=${place}&image_type=photo`;
     let response = await fetch(pixaApi);
     try {
         const pixaData = await response.json();
@@ -99,52 +100,3 @@ app.post("/pic", async function (req, res) {
 
 module.export = app
 
-
-
-/*app.post('/addData', (req, res) => {
-    if(req.body.city) {
-        let geoNamesData = {
-            City: req.body.city,
-            Lat: req.body.latitude,
-            Long: req.body.longitude,
-      };
-      projectData.geoNamesData = geoNamesData;
-      console.log("geoNamesData", geoNamesData);
-    } 
-    else if (req.body.temp) {
-      let weatherData = {
-        Temp: req.body.temp,
-        Desc: req.body.desc,
-      };
-      projectData.weatherData = weatherData;
-      console.log("weatherData ", weatherData);
-    }
-    else if (req.body.pic) {
-      let pixaPic = {
-        Pic: req.body.pic,
-      };
-      projectData.pixaPic = pixaPic;
-      console.log("pixaPic ", pixaPic);
-    }
-    res.send(projectData);
-  });*/
-
-
-/*
-//GET route
-app.get('/allData', (req, res) => {
-    res.send(projectData);
-    console.log('Data sent');
-});
-
-//POST route
-const data = [];
-app.post('/addData', (req, res) => {
-    res.send('POST received');
-    projectData.date = req.body.date;
-    projectData.temperature = req.body.temperature;
-    projectData.feeling = req.body.feeling;
-    res.send(projectData);
-    console.log(projectData);
-    res.send(true);
-});*/

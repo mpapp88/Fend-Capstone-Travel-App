@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+
 $keycolor: rgb(29, 33, 248);
 $second-color: rgb(231, 231, 6);
 $main-font: 'Inconsolata', monospace;
@@ -18,7 +20,11 @@ body{
     font-family: $main-font;
     color: $keycolor;
     overflow-x: hidden;
+    overflow: scroll;
     scroll-behavior: smooth;
+    /*background: url(../media/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;*/
 }
 
 nav{
@@ -55,21 +61,20 @@ ul {
     }
 }
 
-
 .container {
-    background: url(../media/background.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
+    background: url('../media/background.jpg') no-repeat center center/cover;
+    //width: 100%;
     height: auto;
     flex: 2;
+    overflow: scroll;
 }
 h2 {
-    font-size: 20px;
+    font-size: 25px;
     text-align: center;
-    font-weight: bold;
+    font-weight: bolder;
     margin-top: 40px;
-    margin-left: 200px;
+    margin-bottom: 25px;
+    margin-right: 200px;
 }
 .form {
     width: 75%;
@@ -80,7 +85,7 @@ h2 {
     border-radius: 5px;
     box-shadow: 5px 10px 18px rgb(129, 128, 128);
     margin: 20px auto 30px;
-    opacity: 0.2;
+    //opacity: 0.2;
 }
 
 .result-box {
@@ -98,7 +103,8 @@ margin-left: 30px;
 width: 250px;
 height:30px;
 padding: 10px;
-//text-indent: 5%;
+margin: 10px 10px;
+text-indent: 5%;
 }
 #submit {
 float: left;
@@ -127,22 +133,22 @@ cursor: pointer;
     h3{
         padding-top: 5px;
         padding-left: 5px;
-        font-size: 14px;
+        font-size: 20px;
         text-decoration: underline;
     }
     p {
         padding-top: 5px;
         padding-left: 5px;
-        font-size: 13px;
+        font-size: 16px;
     }
 }
 
-#footer {
+.footer {
     color: $second-color;
     background: $colored-background;
     height: 75px;
     font-family: $main-font;
     font-size: 16px;
     text-align: center;
-    padding: 15px 20px;
+    padding: 20px 20px;
 }

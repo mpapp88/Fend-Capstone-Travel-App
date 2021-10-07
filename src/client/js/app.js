@@ -6,12 +6,12 @@ let weather = {};
 let pic = {};
 
 //Event listener to add function to existing HTML DOM element
-document.getElementById("generate").addEventListener('click', handleSubmit);
+document.getElementById("submit").addEventListener('click', handleSubmit);
 
 function handleSubmit(event) {
     event.preventDefault();
 
-    let place = document.getElementById('place').value;
+    let placeInput = document.getElementById('place').value;
     let start = document.getElementById('departure').value;
     let end = document.getElementById('return').value;
 
@@ -25,23 +25,22 @@ function handleSubmit(event) {
         alert('Please enter your return\'s date')
     }
 
-    postGeonamesData('http://localhost:8081/place',{city: place})
+    postGeonamesData('http://localhost:8081/place',{city: placeInput})
     .then(function(tripTo){
         console.log(tripTo);
-        document.getElementById('tripto').innerHTML = ` City:${tripTo.city}, Conutry:${tripTo.country},
-        Conutry Code:${tripTo.code}. `
+        document.getElementById('tripTo').innerHTML = ` City:${tripTo.city}, Country:${tripTo.country}. `
     })
 
-    postWeatherbitData("http://localhost:8801/weather", tripTo)
+    postWeatherbitData("http://localhost:8081/weather", tripTo)
         .then (function(weather){
         
             document.getElementById('weather').innerHTML =`The expected weather for then 
-            is <strong>${weather.description}</strong>, average temperature is <strong>${weather.averageTemp}</strong>.
-            Lowest:<strong>${weather.lowestTemp}</strong>,
-            Highest:<strong>${weather.highestTemp}</strong>.`
-        })
+            is <strong>${weather.description}</strong>, average temperature is <strong>${weather.averageTemp}</strong>C.
+            Lowest:<strong>${weather.lowestTemp}</strong>C.,
+            Highest:<strong>${weather.highestTemp}</strong>C.`
+    })
 
-    postPixabayData('http://localhost:8801/pic',{  city:tripTo.city })
+    postPixabayData('http://localhost:8081/pic',{  city:tripTo.city })
         .then(function (){
         
          let img = pic.hits[0].webformatURL;
@@ -67,7 +66,7 @@ const postGeonamesData = async (url = "", data = {}) => {
         tripTo = {
             code: geoData.geonames[0].countrycode,
             city: geoData.geonames[0].name,
-            county: geoData.geonames[0].countryName,
+            country: geoData.geonames[0].countryName,
             latitude: geoData.geonames[0].lat,
             longitude: geoData.geonames[0].lng
         }
@@ -112,95 +111,5 @@ const postPixabayData = async (url = "", data = {}) =>{
         return pic;
     } catch (error) {
         console.log('error', error)
-    }
-}
-
-
-
-
-/*// Create a new date instance dynamically with JS - UK Date format
-let d = new Date();
-let newDate = d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear();
-
-//Add event listener to the generate button
-document.getElementById('generate').addEventListener('click', performAction);
-
-//Function used by event listener
-function performAction(e) {
-    e.preventDefault();
-    const newZip = document.getElementById('zip').value; //UK version
-    const userInput = document.getElementById('feelings').value;
-    getWeatherData(baseURL, newZip, apiKey)
-    .then(function(weatherData) {
-        //Add data to post request
-        postData('/addData', {
-            date: newDate,
-            temperature: weatherData.main.temp,
-            feeling: userInput})
-    })
-    .then(function(newData) {
-        //Update UI
-        updateUI();
-    })
-};
-
-//Get the weather data
-const getWeatherData = async (baseURL, newZip, apiKey) => {
-    const response = await fetch (baseURL + newZip + apiKey);
-    console.log(response);
-    try {
-        const weatherData = await response.json();
-        return weatherData;
-    }
-    catch(error) {
-        console.log("error", error);
-    }
-}
-
-//Get project data
-const getData = async (url = '') => {
-    const request = await fetch(url);
-    try {
-        const allData = await request.json()
-        return allData
-    }
-    catch(error) {
-        console.log("error", error)
-    }
-};
-
-
-//Post project data
-const postData = async (url = '', data = {}) => {
-    console.log(data);
-    const response = await fetch(url, {
-        method: 'POST',
-        credentials: 'same-origin',
-        headers: {
-            'Content-type': 'application/json',
-        },
-        body: JSON.stringify(data)
-    });
-
-    try {
-        const newData = await response.json();
-        return newData;
-    }
-    catch(error) {
-        console.log("error", error);
-    }
-};*/
-
-//Update User Interface
-const updateUI = async () => {
-    const request = await fetch('/allData');
-    try {
-        const allData = await request.json();
-        document.getElementById('date').innerHTML = 'Today the date is: ' + allData.date;
-        document.getElementById('temp').innerHTML = 'Today\'s temperature is: ' + allData.temperature + ' Celsius.';
-        document.getElementById('content').innerHTML = 'I feel ' + allData.feeling;
-    }
-    catch(error) {
-        console.log("error", error);
     }
 }
